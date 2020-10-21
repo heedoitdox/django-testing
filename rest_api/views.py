@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 
 from .serializers import UserSerializer
 from rest_framework.response import Response
+from rest_framework import status
 
 @api_view(['GET'])
 def user_list(request) :
@@ -16,4 +17,6 @@ def user_create(request) :
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save()
-        return Response(serializer.data)
+        #return Response(serializer.data)
+        return Response(status=status.HTTP_200_OK)
+    return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
