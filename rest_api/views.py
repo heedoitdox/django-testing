@@ -1,10 +1,9 @@
-from django.shortcuts import render
-from .models.User import User
 from rest_framework.decorators import api_view
-
-from .serializers import UserSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from django.shortcuts import render
+from .models.User import User
+from .serializers import UserSerializer
 
 @api_view(['GET'])
 def user_list(request) :
